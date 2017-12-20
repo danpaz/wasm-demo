@@ -1,6 +1,8 @@
 # wasm-demo
 
-Trying out rust compiled to web assembly.
+Demo of rust compiled to web assembly.
+
+![demo](demo.gif)
 
 ## Setup
 
