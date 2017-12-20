@@ -1,0 +1,22 @@
+<html>
+  <head><title>wasm demo</title></head>
+  <body>
+    <div id="counter">0</div>
+    <button id="increment">+</button>
+    <button id="decrement">-</button>
+    <script>
+      fetch('main.wasm')
+        .then(response => response.arrayBuffer())
+        .then(bytes => WebAssembly.instantiate(bytes, {}))
+        .then(results => {
+            let { demo_increment, demo_decrement } = results.instance.exports
+            document.querySelector("#increment").addEventListener("click", () => {
+              document.querySelector("#counter").textContent = demo_increment()
+            })
+            document.querySelector("#decrement").addEventListener("click", () => {
+              document.querySelector("#counter").textContent = demo_decrement()
+            })
+        });
+    </script>
+  </body>
+</html>
