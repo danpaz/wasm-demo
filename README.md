@@ -9,6 +9,7 @@ Demo of rust compiled to web assembly.
 Based on https://www.hellorust.com/demos/add/index.html.
 
     rustup update
+    rustup install nightly
     rustup target add wasm32-unknown-unknown --toolchain nightly
     rustc +nightly --target wasm32-unknown-unknown -O --crate-type=cdylib src/main.rs -o main.big.wasm
     cargo install --git https://github.com/alexcrichton/wasm-gc

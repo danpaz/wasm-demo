@@ -1,40 +1,34 @@
-// thinking...
-// - State implements functions.
-// - Actions are strings that map to functions that State implements.
-// - Actions are dispatched in response to user interactions in JS, updating
-//   state in rust. unsafe?
-// pub fn update -> something something
-//
 pub struct State {
   counter: i32
 }
 
 impl State {
-  fn increment(&self) -> State {
-    State { counter: &self.counter + 1 }
+  fn increment(&mut self) {
+      self.counter = self.counter + 1;
   }
 
-  fn decrement(&self) -> State {
-    State { counter: &self.counter - 1 }
+  fn decrement(&mut self) {
+      self.counter = self.counter - 1;
   }
 }
 
-static mut STATE: State = State { counter: 0 };
-
 #[no_mangle]
-pub fn demo_increment() -> i32 {
-    unsafe {
-        STATE = STATE.increment();
-        STATE.counter
-    }
+pub unsafe fn demo_increment(state: *mut State) -> i32 {
+    let state = &mut *state;
+    state.increment();
+    state.counter
 }
 
 #[no_mangle]
-pub fn demo_decrement() -> i32 {
-    unsafe {
-        STATE = STATE.decrement();
-        STATE.counter
-    }
+pub unsafe fn demo_decrement(state: *mut State) -> i32 {
+    let state = &mut *state;
+    state.decrement();
+    state.counter
+}
+
+#[no_mangle]
+pub fn demo_new_state() -> *mut State {
+    Box::into_raw(Box::new(State { counter: 0 }))
 }
 
 fn main() {
