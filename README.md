@@ -8,7 +8,7 @@ Demo of rust compiled to web assembly.
 
 Based on https://www.hellorust.com/demos/add/index.html.
 
-see & run cargo-build.sh
+see & run ./cargo-build.sh
 
 ## Run
 
