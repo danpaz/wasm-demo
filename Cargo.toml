@@ -4,3 +4,6 @@ version = "0.1.0"
 authors = ["Daniel Paz-Soldan <daniel.pazsoldan@gmail.com>"]
 
 [dependencies]
+
+[lib]
+crate-type = ["cdylib"]

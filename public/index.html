@@ -5,7 +5,7 @@
     <button id="increment">+</button>
     <button id="decrement">-</button>
     <script>
-      fetch('main.wasm')
+      fetch('wasm_demo.wasm')
         .then(response => response.arrayBuffer())
         .then(bytes => WebAssembly.instantiate(bytes, {}))
         .then(results => {

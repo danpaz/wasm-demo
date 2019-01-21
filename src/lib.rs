@@ -31,9 +31,6 @@ pub fn demo_new_state() -> *mut State {
     Box::into_raw(Box::new(State { counter: 0 }))
 }
 
-fn main() {
-
-}
 
 #[cfg(test)]
 mod tests {
